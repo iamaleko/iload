@@ -222,8 +222,27 @@
             r, w, u = 0,
             p = 0,
             s = 152 - cc,
-            v = ((L.total > 1 || n) && L.showSet) || L.imageName || L.imageDesc || (L.forceCloseButton && L.panelType == 1) || L.showInfo;
-          _minPanel.innerHTML = (L.imageName ? '<span style="' + (error ? L.errorNameCss : L.imageNameCss) + '">' + L.imageName + "</span>" : "").concat((L.imageDesc ? '<span style="' + (error ? L.errorDescCss : L.imageDescCss) + '">' + L.imageDesc + "</span>" : ""), ((L.total > 1 || n) && L.showSet ? '<span style="' + L.imageSetCss + '">'.concat(L.imageSetText[0].replace("[N]", y).replace("[T]", L.total), (n ? L.imageSetText[1].replace("[S]", n) : ""), "</span>") : ""), (L.showInfo && !error ? '<span style="' + L.imageInfoCss + '">'.concat(L.fileInfoText.replace("[F]", j[0].match(/\.(\w+)($|#|\?)/)[1]).replace("[W]", t).replace("[H]", a), "</span>") : ""), ((L.total > 1 || L.forceCloseButton || t > d || a > e) && L.panelType == 1 ? "<div class=L_0>".concat((L.total > 1 && (L.slideshowRound || (y != L.total || L.slideshowClose && L.slideshow)) ? '<a href="javascript:void(0)" onclick="this.parentNode.parentNode.__L__.' + (!L.slideshow ? 'play()" title="' + L.tips[3] + '" class=L_g' : 'stop()" title="' + L.tips[4] + '" class=L_h') + "><b><i></i></b></a>" : ""), '<a title="' + L.tips[2] + '" class=L_f href="javascript:void(0)" onclick="this.parentNode.parentNode.__L__.hide()"><b><i></i></b></a>', (L.total > 1 && y > 1 ? '<a title="' + L.tips[0] + '" class=L_e href="javascript:void(0)" onclick="this.parentNode.parentNode.__L__.previous()"><b><i></i></b></a>' : ""), (L.total > 1 && y < L.total ? '<a title="' + L.tips[1] + '" class=L_d href="javascript:void(0)" onclick="this.parentNode.parentNode.__L__.next()"><b><i></i></b></a>' : ""), "</div>") : ""));
+            v = ((L.total > 1 || n) && L.showSet) || L.imageName || L.imageDesc || (L.forceCloseButton && L.panelType == 1) || L.showInfo,
+            ext = j[0].match(/\.(\w+)(?:$|#|\?)|^\s?data:image\/(\w+)/i);
+          _minPanel.innerHTML = (L.imageName ? '<span style="' + (error ? L.errorNameCss : L.imageNameCss) + '">' + L.imageName + "</span>" : "").concat(
+            (L.imageDesc ? '<span style="' + (error ? L.errorDescCss : L.imageDescCss) + '">' + L.imageDesc + "</span>" : ""),
+            ((L.total > 1 || n) && L.showSet ? '<span style="' + L.imageSetCss + '">'.concat(
+              L.imageSetText[0].replace("[N]", y).replace("[T]", L.total),
+              (n ? L.imageSetText[1].replace("[S]", n) : ""),
+              "</span>"
+            ) : ""),
+            (L.showInfo && !error ? '<span style="' + L.imageInfoCss + '">'.concat(
+              L.fileInfoText.replace("[F]", (ext[1] || ext[2] || '?').toLowerCase()).replace("[W]", t).replace("[H]", a),
+              "</span>"
+            ) : ""),
+            ((L.total > 1 || L.forceCloseButton || t > d || a > e) && L.panelType == 1 ? "<div class=L_0>".concat(
+              (L.total > 1 && (L.slideshowRound || (y != L.total || L.slideshowClose && L.slideshow)) ? '<a href="javascript:void(0)" onclick="this.parentNode.parentNode.__L__.' + (!L.slideshow ? 'play()" title="' + L.tips[3] + '" class=L_g' : 'stop()" title="' + L.tips[4] + '" class=L_h') + "><b><i></i></b></a>" : ""),
+              '<a title="' + L.tips[2] + '" class=L_f href="javascript:void(0)" onclick="this.parentNode.parentNode.__L__.hide()"><b><i></i></b></a>',
+              (L.total > 1 && y > 1 ? '<a title="' + L.tips[0] + '" class=L_e href="javascript:void(0)" onclick="this.parentNode.parentNode.__L__.previous()"><b><i></i></b></a>' : ""),
+              (L.total > 1 && y < L.total ? '<a title="' + L.tips[1] + '" class=L_d href="javascript:void(0)" onclick="this.parentNode.parentNode.__L__.next()"><b><i></i></b></a>' : ""),
+              "</div>"
+            ) : "")
+          );
           _minPanel.style.width = Math.max(L.imageThis.width, s) + "px";
           _a(_preload, _minPanel);
           r = function() {
